@@ -1,5 +1,5 @@
 /* Readability and touch refinements; loaded after the main club theme. */
-.cup-honours{scroll-margin-top:150px;margin-top:55px;padding:38px;border:1px solid #444;border-top:4px solid var(--orange);background:linear-gradient(125deg,#ff691d0d,#171717 65%)}
+.cup-honours{scroll-margin-top:0;margin-top:55px;padding:38px;border:1px solid #444;border-top:4px solid var(--orange);background:linear-gradient(125deg,#ff691d0d,#171717 65%)}
 .cup-honours-top{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center;gap:45px}
 .cup-honours-total{text-align:center}
 .cup-honours-total>strong{display:block;font:800 160px/.9 var(--display);color:var(--orange)}
@@ -15,7 +15,7 @@
 .cup-honours-source a{display:inline-flex;align-items:center;min-height:44px;color:var(--orange);font-weight:700}
 @media(min-width:1440px){.cup-honours{padding:48px}.cup-honours-top{grid-template-columns:230px minmax(0,1fr);gap:60px}.cup-honours-total>strong{font-size:200px}.cup-honours-total>span{font-size:16px}.cup-honours-top p:not(.eyebrow){font-size:20px}.cup-title-years strong{font-size:46px}.cup-title-years span,.cup-honours-source{font-size:15px}}
 @media(max-width:980px){.cup-honours-top{grid-template-columns:145px minmax(0,1fr);gap:28px}.cup-honours{padding:28px}.cup-title-years{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:600px){.cup-honours{padding:24px 20px;scroll-margin-top:100px}.cup-honours-top{grid-template-columns:minmax(0,1fr);gap:28px}.cup-honours-total{display:flex;align-items:center;text-align:left;gap:22px}.cup-honours-total>strong{font-size:108px}.cup-honours-total>span{font-size:13px;margin-top:0}.cup-honours h3{font-size:42px}.cup-honours-top p:not(.eyebrow){font-size:15px}.cup-title-years{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cup-honours-source{font-size:12px;gap:4px 16px}}
+@media(max-width:600px){.cup-honours{padding:24px 20px}.cup-honours-top{grid-template-columns:minmax(0,1fr);gap:28px}.cup-honours-total{display:flex;align-items:center;text-align:left;gap:22px}.cup-honours-total>strong{font-size:108px}.cup-honours-total>span{font-size:13px;margin-top:0}.cup-honours h3{font-size:42px}.cup-honours-top p:not(.eyebrow){font-size:15px}.cup-title-years{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cup-honours-source{font-size:12px;gap:4px 16px}}
 .jersey-number{font-family:var(--display);font-weight:800;font-size:48px;text-anchor:middle;fill:var(--white);letter-spacing:0}
 .jersey-number.is-unconfirmed{fill:#777}
 .jersey-note{color:var(--muted);font-size:14px;line-height:1.8;margin:-4px 0 25px;max-width:95ch}

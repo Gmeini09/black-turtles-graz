@@ -19,6 +19,8 @@ GitHub Pages veröffentlicht den Ordner `docs/` aus dem Branch `main`. Änderung
 
 Die relativen Dateipfade funktionieren unter dem GitHub-Pages-Projektpfad. Ein lokaler Aufruf gelingt beispielsweise mit `python -m http.server 8765 --directory docs`.
 
+Die Seitenbereiche folgen der Menüfolge Start, Verein, Mannschaft, Spielplan, Live, Ergebnisse, Geschichte und Mitspielen. Native Sprunglinks verwenden einen gemeinsamen Abstand zur festen Kopfzeile; die aktive Menümarkierung folgt dem sichtbaren Bereich. `#cups` zeigt auf die Cup-Überschrift, `#cup-cards` enthält die gerenderten Karten.
+
 ## Daten und Livebetrieb
 
 Der Saisonspielplan wird beim Öffnen und alle fünf Minuten mit dem öffentlichen NHL-Graz-Feed abgeglichen. Bei Ausfällen bleibt der letzte bestätigte Stand erhalten. Zeitangaben verwenden Europe/Vienna. Der Kalender ist ein ICS-Download; Änderungen erfordern einen erneuten Import.

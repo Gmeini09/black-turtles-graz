@@ -118,7 +118,7 @@
   $('#results-body').innerHTML = data.results.map(result => `<tr><th scope="row">${escape(result.opponent)}</th><td data-label="Heim">${score(result.home)}</td><td data-label="Auswärts">${score(result.away)}</td></tr>`).join('');
   $('#scorers-body').innerHTML = data.scorers.map((player,index) => `<tr><th scope="row"><span class="scorer-rank">${String(index + 1).padStart(2,'0')}</span>${escape(player.name)}</th><td data-label="Tore">${player.goals}</td><td data-label="Vorlagen">${player.assists}</td><td data-label="Punkte" class="scorer-points">${player.points}</td></tr>`).join('');
   $('#history-body').innerHTML = data.history.map(item => `<tr><th scope="row">${external(item.url,escape(item.season) + ' ↗')}</th><td data-label="Grunddurchgang">${escape(item.group)} · Platz ${escape(item.place.replace(/\.$/,''))}</td><td data-label="Weiterer Verlauf">${escape(item.detail)}</td></tr>`).join('');
-  $('#cups').innerHTML = data.cups.map(cup => `<article class="cup-card"><span class="cup-year">${escape(cup.year)}</span><h4>${escape(cup.title)}</h4><p>${escape(cup.detail)}</p>${external(cup.url,escape(cup.linkLabel || 'Turnierbericht') + ' ↗','text-link')}</article>`).join('');
+  $('#cup-cards').innerHTML = data.cups.map(cup => `<article class="cup-card"><span class="cup-year">${escape(cup.year)}</span><h4>${escape(cup.title)}</h4><p>${escape(cup.detail)}</p>${external(cup.url,escape(cup.linkLabel || 'Turnierbericht') + ' ↗','text-link')}</article>`).join('');
   const honours = data.clubHonours;
   $('#asvoe-title-count').textContent = String(honours.asvoeTitles);
   $('#asvoe-title-years').innerHTML = honours.titleYears.map(year => `<li><strong>${year}</strong><span>${year === 2015 ? 'Premierensieg' : year === 2020 ? 'Gruppe A' : `${year - 2020}. Serientitel`}</span></li>`).join('');
@@ -157,13 +157,76 @@
   const menu = $('.menu-toggle');
   function closeMenu() { menu.setAttribute('aria-expanded','false'); menu.setAttribute('aria-label','Menü öffnen'); $('#main-navigation').classList.remove('open'); document.body.classList.remove('menu-open'); }
   menu.addEventListener('click', () => { const isOpen = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded',String(isOpen)); menu.setAttribute('aria-label',isOpen ? 'Menü schließen' : 'Menü öffnen'); $('#main-navigation').classList.toggle('open',isOpen); document.body.classList.toggle('menu-open',isOpen); });
-  all('#main-navigation a').forEach(link => link.addEventListener('click',closeMenu));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   window.matchMedia('(min-width: 981px)').addEventListener('change',event => { if (event.matches) closeMenu(); });
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => { entries.filter(entry => entry.isIntersecting).forEach(entry => { all('#main-navigation a').forEach(link => link.classList.toggle('active',link.hash === '#' + entry.target.id)); }); },{rootMargin:'-15% 0px -65% 0px',threshold:0});
-    all('main section[id]').forEach(section => observer.observe(section));
+
+  const navigationLinks = all('#main-navigation a');
+  const navigationSections = navigationLinks.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean);
+  function setActiveSection(id) {
+    navigationLinks.forEach(link => {
+      const active = link.hash === '#' + id;
+      link.classList.toggle('active',active);
+      if (active) link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
   }
+  function hashTarget(hash) {
+    try { return hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null; }
+    catch { return null; }
+  }
+  function activateTarget(target) {
+    const section = target?.closest('main section[id]');
+    if (section && navigationSections.includes(section)) setActiveSection(section.id);
+    else if (target?.id === 'inhalt') setActiveSection('start');
+  }
+  let navigationFrame = 0;
+  function updateNavigation() {
+    navigationFrame = 0;
+    const marker = $('.site-header').getBoundingClientRect().bottom + 24;
+    let current = navigationSections[0];
+    for (const section of navigationSections) {
+      if (section.getBoundingClientRect().top <= marker) current = section;
+      else break;
+    }
+    if (current) setActiveSection(current.id);
+  }
+  function scheduleNavigation() {
+    if (!navigationFrame) navigationFrame = requestAnimationFrame(updateNavigation);
+  }
+  // Keep native anchors and browser history; one CSS offset accounts for the sticky header.
+  document.addEventListener('click',event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = hashTarget(link.hash);
+    if (!target) return;
+    closeMenu();
+    activateTarget(target);
+    scheduleNavigation();
+  });
+  window.addEventListener('scroll',scheduleNavigation,{passive:true});
+  window.addEventListener('resize',scheduleNavigation);
+  window.addEventListener('hashchange',() => { activateTarget(hashTarget(window.location.hash)); scheduleNavigation(); });
+  window.addEventListener('pageshow',scheduleNavigation);
+
+  // Re-align a direct deep link once fonts and the rendered content have settled.
+  // Any user interaction cancels this correction so it cannot pull the visitor back.
+  const initialHash = window.location.hash;
+  let allowInitialAlignment = true;
+  const cancelInitialAlignment = () => { allowInitialAlignment = false; };
+  const interactionEvents = ['pointerdown','wheel','touchstart','keydown'];
+  interactionEvents.forEach(type => window.addEventListener(type,cancelInitialAlignment,{once:true,passive:true}));
+  async function finishInitialNavigation() {
+    if (document.fonts?.ready) await document.fonts.ready;
+    interactionEvents.forEach(type => window.removeEventListener(type,cancelInitialAlignment));
+    if (allowInitialAlignment && initialHash && window.location.hash === initialHash) {
+      const target = hashTarget(initialHash);
+      if (target) { target.scrollIntoView({block:'start',behavior:'auto'}); activateTarget(target); }
+    }
+    scheduleNavigation();
+  }
+  if (document.readyState === 'complete') finishInitialNavigation();
+  else window.addEventListener('load',finishInitialNavigation,{once:true});
+  scheduleNavigation();
   window.TURTLES_UI = {renderNextMatch, renderFixtures};
   renderNextMatch(); renderFixtures(); renderPlayers();
   setInterval(() => { renderNextMatch(); renderFixtures(); },60000);
