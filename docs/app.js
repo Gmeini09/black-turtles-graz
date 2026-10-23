@@ -231,7 +231,7 @@
   ['wheel','touchstart','pointerdown','keydown'].forEach(type => window.addEventListener(type,releaseNavigationTarget,{passive:true}));
   window.addEventListener('scroll',scheduleNavigation,{passive:true});
   window.addEventListener('resize',scheduleNavigation);
-  window.addEventListener('hashchange',() => { activateTarget(hashTarget(window.location.hash)); scheduleNavigation(); });
+  window.addEventListener('hashchange',() => { navigationTarget = hashTarget(window.location.hash); activateTarget(navigationTarget); scheduleNavigation(); });
   window.addEventListener('pageshow',scheduleNavigation);
 
   // Re-align a direct deep link once fonts and the rendered content have settled.
