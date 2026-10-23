@@ -492,3 +492,13 @@ tbody th{font-size:13px;line-height:1.7}
   .player-visual{height:340px}
   .player-last{font-size:44px}
 }
+
+/* Spielerkarten öffnen das NHL-Graz-Spielerprofil */
+.player-card{position:relative;cursor:pointer}
+.player-profile-link{color:inherit;text-decoration:none}
+.player-profile-link:after{content:'';position:absolute;inset:0;z-index:1}
+.player-profile-link:focus-visible{outline:none}
+.player-card:has(.player-profile-link:focus-visible){outline:2px solid var(--orange);outline-offset:3px}
+.player-card .jersey-source{position:relative;z-index:2}
+.player-card:hover .player-last{color:var(--orange)}
+.player-card .player-info>p:after{content:'\00a0↗';color:var(--orange);white-space:nowrap}
