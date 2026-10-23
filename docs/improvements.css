@@ -1,0 +1,470 @@
+/* Readability and touch refinements; loaded after the main club theme. */
+.jersey-number{font-family:var(--display);font-weight:800;font-size:48px;text-anchor:middle;fill:var(--white);letter-spacing:0}
+.jersey-number.is-unconfirmed{fill:#777}
+.jersey-note{color:var(--muted);font-size:14px;line-height:1.8;margin:-4px 0 25px;max-width:95ch}
+.jersey-source{display:flex;align-items:center;flex-wrap:wrap;gap:5px;min-height:44px;margin-top:8px;color:var(--orange);font-size:13px;font-weight:700;line-height:1.6}
+.jersey-source>span{color:var(--muted);font-weight:400}
+.jersey-source:hover{color:#ffa26f}
+.jersey-missing,.jersey-missing:hover{color:var(--muted);font-weight:400}
+@media(min-width:1440px){.jersey-note{font-size:17px}.jersey-source{font-size:16px}}
+@media(max-width:480px){.jersey-note{font-size:13px}.jersey-source{font-size:12px;gap:3px}}
+.button,.text-link,.filter{font-size:13px}
+.button,.text-link,.filter,.home-filter,.calendar-button,.fixture-actions .fixture-source,
+.match-actions a,.match-actions button,.goalie-card>a,.footer-bottom button,
+.dialog-top button,#refresh-live,#sync-schedule{min-height:44px}
+.calendar-button,.fixture-actions .fixture-source,.dialog-top button{min-width:44px}
+.calendar-button{width:44px;height:44px}
+.fixture-actions .fixture-source{justify-content:center;font-size:20px}
+.filter{padding:11px 16px}
+.filter span{font-size:11px;opacity:.85}
+.home-filter{font-size:13px}
+.home-filter input{width:20px;height:20px}
+.player-search input{font-size:16px;min-height:44px}
+.section-note,.minor-note,.panel-note,.results-intro{font-size:12px;line-height:1.8}
+.section-note a{display:inline-flex;align-items:center;min-height:44px}
+.achievement p,.cup-card p,.goalie-card>p,.goalie-card>div>span{font-size:12px;line-height:1.8}
+.achievement-year,.player-first,.player-info>p,.cup-card a,.goalie-card>a{font-size:12px}
+.panel-heading>span,.scorer-heading>span,.playoff-row>div>span{font-size:11px;line-height:1.6}
+table,.history-table{font-size:13px}
+thead th{font-size:11px;line-height:1.6}
+tbody th{font-size:13px;line-height:1.7}
+.history-table tbody th a{display:inline-flex;align-items:center;min-height:44px}
+.footer-bottom,.footer-bottom>span:first-child,.footer-bottom>span:last-child,.footer-bottom button{font-size:12px;line-height:1.7}
+.footer-bottom>div{gap:4px 16px}
+.footer-bottom button{padding:10px 6px}
+.dialog-top button{display:inline-flex;align-items:center;justify-content:center;flex:none}
+#dialog-content{font-size:14px}
+#dialog-content a{display:inline-block;min-height:44px;padding-block:9px}
+.source-list{overflow-wrap:anywhere}
+.section-heading>*,.club-grid>*,.venue-grid>*,.join-grid>*,.season-calendar>*,
+.team-memory>*,.schedule-sync>*,.next-match,.fixture-row>*,.live-layout>*{min-width:0}
+
+/* A single season download and a clearly visible refresh action. */
+.season-calendar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:23px 25px;margin:0 0 26px;border:1px solid #444;border-left:3px solid var(--orange);background:#1a1a1a}
+.calendar-copy{flex:1;min-width:0;font-size:13px;line-height:1.8;color:var(--muted)}
+.calendar-copy strong{display:block;color:var(--white);font-size:15px;font-weight:800;line-height:1.6;margin-bottom:4px}
+.calendar-copy p{margin:0}
+.season-calendar .button{flex:none;font-size:13px;gap:18px}
+.schedule-sync{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin:0 0 22px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--muted)}
+.schedule-sync p{margin:0;flex:1}
+#sync-schedule{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--orange);padding:10px 12px;border:1px solid #444;font-size:13px;font-weight:800;line-height:1.6;text-align:center}
+#sync-schedule:hover{border-color:var(--orange);color:#ffa26f}
+#sync-schedule:disabled{color:var(--muted);cursor:wait}
+
+/* Joining the club: useful information beside the invitation. */
+.join-section{padding-block:90px;background:#111;border-block:1px solid #303030}
+.join-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:75px;align-items:start}
+.join-section h2{font-size:clamp(48px,5.7vw,76px);line-height:.98;letter-spacing:-.012em}
+.join-section p:not(.eyebrow){max-width:580px;color:var(--muted);font-size:15px;line-height:1.85;margin-top:24px}
+.join-section .text-link{color:var(--orange);margin-top:18px}
+.join-grid dl{display:grid;gap:0;margin:0;border-top:1px solid #444}
+.join-grid dl>div{padding:23px 0;border-bottom:1px solid #333}
+.join-grid dt{color:var(--orange);font-size:12px;font-weight:800;line-height:1.6;letter-spacing:.06em;text-transform:uppercase}
+.join-grid dd{margin:8px 0 0;color:var(--white);font-size:15px;line-height:1.8;overflow-wrap:anywhere}
+.join-grid dd a{display:inline-flex;align-items:center;min-height:44px;color:var(--orange);text-decoration:underline;text-underline-offset:4px}
+
+/* Historical team photograph, separate from the current roster. */
+.team-memory{display:grid;grid-template-columns:1.2fr 1fr;gap:0;align-items:stretch;margin:0 0 42px;border:1px solid #3c3c3c;background:#171717}
+.team-memory>img{display:block;width:100%;height:100%;max-height:500px;aspect-ratio:3/2;object-fit:cover;object-position:center}
+.team-memory figcaption{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:35px 36px;min-width:0}
+.team-memory .eyebrow{font-size:11px;line-height:1.7;letter-spacing:.08em;color:var(--orange);margin:0 0 18px}
+.team-memory figcaption>strong{font-family:var(--display);font-size:clamp(34px,3.3vw,46px);line-height:1.02;color:var(--white)}
+.team-memory figcaption p{font-size:14px;line-height:1.8;color:var(--muted);margin-top:18px}
+.team-memory figcaption .text-link{font-size:12px;color:var(--orange);margin-top:14px;gap:10px;flex-wrap:wrap}
+
+@media(max-width:980px){
+  .join-grid{gap:38px}
+  .team-memory figcaption{padding:28px}
+  .fixture-actions .fixture-source{font-size:20px}
+}
+
+@media(max-width:760px){
+  body{font-size:15px;line-height:1.8}
+  .button,.text-link,.hero-actions .button,.hero-actions .text-link,
+  .match-actions a,.match-actions button,.match-actions .button.primary,
+  .venue-actions .button,.venue-actions .text-link,.milestone .text-link,
+  .cup-card a,.goalie-card>a,.stream-actions .button,.stream-actions .text-link{font-size:13px;min-height:44px}
+  .eyebrow,.hero .eyebrow,.venue-section .eyebrow{font-size:11px;line-height:1.7;letter-spacing:.1em}
+  .brand small{font-size:10px;letter-spacing:.07em;line-height:1.3;margin-top:5px}
+  #main-navigation a{font-size:14px;min-height:48px}
+  .hero{min-height:0}
+  .hero-inner{padding-bottom:30px}
+  .hero h1{font-size:clamp(84px,26vw,119px)}
+  .hero-tagline{font-size:15px;line-height:1.8}
+  .hero-actions{gap:10px 20px;flex-wrap:wrap}
+  .hero-actions .button{padding-inline:18px;gap:18px}
+  .hero-bottom{position:relative;bottom:auto;gap:10px;flex-wrap:wrap;padding-bottom:20px}
+  .hero-bottom>span,.hero-bottom small{font-size:11px;max-width:none;line-height:1.7;letter-spacing:0;text-align:left}
+  .hero-bottom small{width:100%}
+  .next-match{max-width:none;padding:24px 20px}
+  .next-match-top{flex-wrap:wrap;gap:8px 14px}
+  .next-match-top .mini-label{font-size:11px}
+  .next-match-date,.next-match-date>span{font-size:12px;line-height:1.7}
+  .next-match-date{flex-wrap:wrap;gap:5px 14px}
+  .matchup{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px}
+  .match-team{font-size:13px;line-height:1.6}
+  .match-team>strong{min-height:38px;overflow-wrap:anywhere}
+  .match-team>span{font-size:11px;line-height:1.4;margin-top:0}
+  .match-meta{font-size:12px;line-height:1.8;flex-wrap:wrap}
+  .match-actions{gap:8px 14px;align-items:flex-start}
+  .match-actions .button.primary{padding:12px 14px;gap:10px}
+  .match-actions>a{padding-block:9px}
+  .club-strip-inner{grid-template-columns:1fr 1.3fr 1fr;gap:12px;align-items:start;padding-block:23px}
+  .club-strip-inner>div,.club-strip-inner>div:nth-child(3){flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;padding:0;min-width:0}
+  .club-strip strong{font-size:46px}
+  .club-strip-inner>div>span{font-size:11px;line-height:1.65;letter-spacing:0;overflow-wrap:anywhere}
+  .club-grid p:not(.eyebrow):not(.lead){font-size:14px;line-height:1.85}
+  .club-mark p{font-size:12px!important}
+  .club-mark>span{font-size:11px}
+  .achievement p{font-size:13px;line-height:1.8}
+  .achievement-year{font-size:12px}
+  .section-description,.section-side p{font-size:13px;line-height:1.8}
+  .section-description{max-width:none}
+  .section-side{min-width:0}
+  .section-side p{min-width:0}
+  .schedule-toolbar,.team-toolbar{gap:16px}
+  .filter-group{gap:8px;max-width:100%;min-width:0}
+  .filter{font-size:13px;line-height:1.5;min-height:46px;padding:11px 13px}
+  .filter span{font-size:11px;margin-left:5px}
+  .home-filter{min-height:44px;font-size:13px;line-height:1.7}
+  .player-search{min-height:48px}
+  .player-search input{font-size:16px;min-height:46px}
+  .section-note,.live-section .section-note{font-size:12px;line-height:1.8;flex-direction:column;gap:4px;align-items:flex-start}
+  .section-note p,.live-section .section-note>p{max-width:100%}
+  .section-note a{text-align:left;min-width:0;min-height:44px;line-height:1.7}
+  .player-first,.player-info>p,.player-role{font-size:12px;line-height:1.6}
+  .player-info>p{letter-spacing:.02em}
+  .stat-grid>div>span{font-size:11px;line-height:1.8;letter-spacing:0;overflow-wrap:anywhere}
+  .results-intro,.panel-note,.minor-note{font-size:13px;line-height:1.85}
+  .panel-heading,.scorer-heading{flex-wrap:wrap;gap:8px 16px}
+  .panel-heading>span,.scorer-heading>span{font-size:12px;max-width:none;text-align:left}
+  .playoff-row>div>span{font-size:11px;line-height:1.7}
+  .playoff-row strong{font-size:14px;line-height:1.7}
+  .goalie-card>p,.goalie-card>div>span{font-size:13px;line-height:1.9}
+  .goalie-card>.mini-label{font-size:11px}
+  .milestone p,.cup-card p{font-size:13px;line-height:1.85}
+  .milestone>div>span{font-size:12px}
+  .history-details summary{font-size:13px;min-height:52px;line-height:1.7}
+  .history-details summary>span:first-child{min-width:0}
+  .cups-grid{gap:28px 22px}
+  .venue-section p:not(.eyebrow){font-size:15px;line-height:1.85}
+  .venue-photo>span{font-size:11px;line-height:1.7;left:17px;right:17px;letter-spacing:.04em}
+  .footer-top{gap:20px}
+  .footer-top>p{font-size:13px;line-height:1.8}
+  .footer-top .brand>span{font-size:23px}
+  .footer-bottom{gap:8px;align-items:flex-start}
+  .footer-bottom>div{margin:0;gap:4px 12px}
+  .footer-bottom,.footer-bottom button,.footer-bottom>span:first-child,.footer-bottom>span:last-child{font-size:12px;line-height:1.8}
+  .footer-bottom button{min-height:44px;padding:10px 5px}
+  #dialog-content{font-size:14px;line-height:1.85}
+  .dialog-top button{min-height:44px;min-width:44px}
+  .toast{font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+  .live-panel-heading{flex-wrap:wrap;gap:10px}
+  .live-status-badge{font-size:11px;line-height:1.6;padding:7px 9px;letter-spacing:.02em}
+  .live-panel-heading .mini-label{font-size:11px}
+  .live-team strong,.live-team>span{font-size:12px;line-height:1.6}
+  .live-update-status,.stream-status,.live-clock,.live-fixture-meta,.goal-time,.goal-name>span{font-size:13px;line-height:1.8}
+  #refresh-live{font-size:13px;min-height:44px;padding:10px 4px}
+  .join-section{padding-block:65px}
+  .join-grid{grid-template-columns:minmax(0,1fr);gap:35px}
+  .join-section p:not(.eyebrow){font-size:15px;line-height:1.85}
+  .join-grid dt{font-size:12px}
+  .join-grid dd{font-size:15px}
+  .team-memory{grid-template-columns:minmax(0,1fr);margin-bottom:32px}
+  .team-memory>img{aspect-ratio:3/2;height:auto;max-height:none;object-fit:cover}
+  .team-memory figcaption{padding:26px}
+  .team-memory figcaption>strong{font-size:39px}
+  .team-memory .eyebrow{font-size:11px;line-height:1.8}
+  .team-memory figcaption p{font-size:14px}
+  .team-memory figcaption .text-link{font-size:13px}
+}
+
+@media(max-width:600px){
+  .season-calendar{flex-direction:column;align-items:stretch;gap:17px;padding:20px 18px}
+  .season-calendar .button{width:100%;min-height:48px;white-space:normal;text-align:center;font-size:13px}
+  .calendar-copy{font-size:13px}
+  .calendar-copy strong{font-size:15px}
+  .schedule-sync{align-items:flex-start;flex-direction:column;gap:7px}
+  #sync-schedule{min-height:46px}
+  .fixture-row{grid-template-columns:48px minmax(0,1fr);gap:14px 12px;padding:20px 15px;min-width:0}
+  .fixture-team{font-size:12px;line-height:1.6;gap:9px;flex-direction:column;text-align:center}
+  .fixture-team img{width:42px;height:42px}
+  .fixture-team strong{font-size:inherit;line-height:inherit;overflow-wrap:anywhere}
+  .fixture-teams{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);gap:8px}
+  .fixture-versus{font-size:11px;line-height:1.6}
+  .date-day{font-size:36px}
+  .date-month{font-size:11px;line-height:1.6;letter-spacing:0;overflow-wrap:normal}
+  .fixture-time{grid-column:1/-1;grid-row:2;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;font-size:15px;line-height:1.6;white-space:normal}
+  .fixture-time span,.fixture-time small{display:inline;font-size:12px;line-height:1.7;margin:0}
+  .fixture-actions{grid-column:1/-1;grid-row:3;justify-content:flex-start;gap:12px}
+  .fixture-actions .calendar-button{height:44px;width:44px;min-height:44px}
+  .fixture-actions .fixture-source{min-height:44px;min-width:44px}
+  .fixture-live-score{font-size:29px}
+  .live-type{font-size:12px}
+  .results-table tbody tr,.scorer-table tbody tr,.history-table tbody tr{padding:18px 16px;gap:14px 16px}
+  .results-table tbody th,.scorer-table tbody th,.history-table tbody th{font-size:15px;line-height:1.8}
+  .results-table tbody tr td,.scorer-table tbody tr td{font-size:15px;line-height:1.8}
+  .history-table tbody tr td{font-size:14px;line-height:1.85}
+  .results-table tbody td::before,.scorer-table tbody td::before,.history-table tbody td::before{font-size:12px;line-height:1.8}
+  .goalie-card{grid-template-columns:minmax(0,1fr);gap:0;padding:25px}
+  .goalie-card>.mini-label,.goalie-card h3,.goalie-card>strong,.goalie-card>p,.goalie-card>div,.goalie-card>a{grid-column:1;grid-row:auto;text-align:left}
+  .goalie-card h3{font-size:34px;line-height:1.08}
+  .goalie-card>strong{font-size:72px;margin-top:20px}
+  .goalie-card>div>span{flex-wrap:wrap;gap:3px 14px}
+}
+
+@media(max-width:480px){
+  .header-inner{gap:10px}
+  .section-heading{gap:24px}
+  .section h2,.join-section h2{font-size:clamp(44px,12vw,56px)}
+  .section-side{flex-wrap:wrap;gap:12px 18px}
+  .section-side p{font-size:13px;padding-left:16px}
+  .season-stamp{font-size:35px}
+  .cups-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .cup-card h4{font-size:28px;line-height:1.15}
+  .cup-card p{font-size:14px}
+  .cup-year{font-size:39px}
+  .cup-card a{font-size:13px}
+  .player-info{padding:16px 12px 18px}
+  .player-last{font-size:25px;line-height:1.15}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-grid strong{font-size:50px}
+  .stat-grid .small-stat{font-size:26px}
+  .stat-grid>div{padding:23px 13px!important}
+  .stat-grid>div>span{font-size:11px;line-height:1.8}
+  .live-ticker-panel,.live-stream-panel{padding:22px 16px}
+  .live-scoreboard{gap:7px}
+  .live-score-number{font-size:54px}
+  .live-team img{height:50px;width:50px}
+  .stream-actions .button{max-width:100%;gap:12px;white-space:normal;text-align:center}
+  .team-memory figcaption{padding:24px 20px}
+  .team-memory figcaption>strong{font-size:36px}
+  .footer-top .brand img{height:42px;width:42px}
+  .footer-top .brand{gap:10px}
+  .footer-top .brand>span{font-size:21px}
+}
+
+/* Desktop reading sizes. Explicit component sizes also grow with the layout. */
+@media(min-width:981px){
+  body{font-size:17px}
+  .header-inner{grid-template-columns:225px minmax(0,1fr);gap:22px}
+  .header-league{display:none}
+  #main-navigation{gap:clamp(13px,1.5vw,24px)}
+  #main-navigation a{font-size:14px;min-height:48px}
+  .brand small{font-size:11px;letter-spacing:.08em}
+  .button,.text-link,.filter,.hero-actions .text-link,.match-actions a,.match-actions button,
+  .match-actions .button.primary,.stream-actions .button,.stream-actions .text-link,
+  .live-ticker-panel>.text-link,.goalie-card>a,.cup-card a,.milestone .text-link,
+  #refresh-live,#sync-schedule,.season-calendar .button{font-size:15px}
+  .button,.filter,.calendar-button,.fixture-actions .fixture-source{min-height:48px}
+  .eyebrow,.hero .eyebrow,.mini-label,.next-match-date,.next-match-date>span,
+  .match-team>span,.match-meta,.club-strip-inner>div>span,.club-strip-inner>a,
+  .club-mark>span,.date-month,.fixture-type,.fixture-time span,.fixture-time small,
+  .player-role,.stat-grid>div>span,.scorer-rank,.playoff-row>div>span,
+  .live-panel-heading .mini-label,.live-status-badge,.live-team>span,
+  .footer-bottom,.footer-bottom button,.footer-bottom>span:first-child,
+  .footer-bottom>span:last-child,.hero-bottom>span,.hero-bottom small{font-size:13px}
+  .club-mark p{font-size:13px!important}
+  .match-team,.fixture-team,.home-filter,.player-first,.player-info>p,
+  .section-description,.section-side p,.calendar-copy,.schedule-sync,
+  .achievement p,.achievement-year,.cup-card p,.goalie-card>p,.goalie-card>div>span,
+  .panel-heading>span,.scorer-heading>span,.panel-note,.results-intro,.minor-note,
+  .section-note,.live-section .section-note,.playoff-row strong,.milestone p,
+  .live-team strong,.live-fixture-meta,.live-clock,.live-update-status,.live-goals>p,
+  .live-goal,.goal-time,.goal-name>span,.stream-status,.team-memory figcaption p,
+  .team-memory figcaption .text-link,.join-grid dt{font-size:15px}
+  .filter span{font-size:13px}
+  .hero-tagline{font-size:20px}
+  .next-match-top h2{font-size:30px}
+  .hero-inner{grid-template-columns:minmax(0,1fr) 440px;gap:40px}
+  .match-team img{width:80px;height:76px}
+  .match-actions{gap:14px}
+  .match-actions .button.primary{padding:14px 18px;gap:14px}
+  .fixture-row{grid-template-columns:82px minmax(260px,1fr) 85px 100px 112px;gap:18px;min-height:134px}
+  .fixture-team img{width:50px;height:50px}
+  .fixture-team strong{min-width:0;overflow-wrap:anywhere}
+  .fixture-versus{font-size:14px}
+  .fixture-time{font-size:18px}
+  .date-day{font-size:44px}
+  .calendar-button{width:48px;height:48px}
+  .calendar-button svg{width:21px;height:21px}
+  table,.history-table,tbody th{font-size:16px}
+  thead th{font-size:13px}
+  th,td{padding-block:19px}
+  .results-table .score{font-size:18px}
+  .player-last{font-size:34px}
+  .player-search{max-width:290px}
+  .player-search input{font-size:17px}
+  .season-calendar{gap:30px}
+  .calendar-copy h3{font-size:26px;line-height:1.2;margin-bottom:8px}
+  .live-panel-heading{flex-wrap:wrap}
+  .live-panel-heading h3{font-size:34px}
+  .live-score-number{font-size:82px}
+  .live-team img{width:80px;height:80px}
+  .stream-poster>strong{font-size:30px}
+  .stream-poster img{width:100px;height:100px}
+  .join-section p:not(.eyebrow),.join-grid dd{font-size:17px}
+  #dialog-content{font-size:17px}
+  .footer-top>p{font-size:17px}
+}
+
+@media(min-width:1440px){
+  :root{--header:108px;--desktop-text:clamp(18px,1vw,20px);--desktop-detail:clamp(14px,.8vw,16px);--desktop-control:clamp(16px,.9vw,18px)}
+  .container{width:min(100%,1760px);padding-inline:clamp(40px,3vw,64px)}
+  body{font-size:var(--desktop-text)}
+  .section{padding-block:130px}
+  .header-inner{grid-template-columns:280px minmax(0,1fr);gap:36px}
+  .brand{gap:17px}
+  .brand img{width:70px;height:70px}
+  .brand>span{font-size:32px}
+  .brand small{font-size:12px;margin-top:10px}
+  #main-navigation{gap:clamp(21px,1.8vw,34px);justify-content:flex-end}
+  #main-navigation a{font-size:var(--desktop-control)}
+  #main-navigation a:after{bottom:21px;height:3px}
+  .hero{min-height:max(850px,calc(100svh - var(--header)))}
+  .hero-inner{grid-template-columns:minmax(0,1fr) clamp(500px,31vw,620px);gap:clamp(65px,5vw,100px);padding-top:70px;padding-bottom:100px}
+  .hero h1{font-size:clamp(170px,9.5vw,220px);line-height:.84}
+  .hero .eyebrow{font-size:var(--desktop-detail);margin-bottom:32px}
+  .hero-tagline{font-size:clamp(22px,1.3vw,26px);line-height:1.6;margin-top:36px}
+  .hero-actions{margin-top:34px;gap:34px}
+  .hero-bottom>span,.hero-bottom small{font-size:13px;line-height:1.7}
+  .button,.text-link,.filter,.hero-actions .text-link,.match-actions a,.match-actions button,
+  .match-actions .button.primary,.stream-actions .button,.stream-actions .text-link,
+  .live-ticker-panel>.text-link,.goalie-card>a,.cup-card a,.milestone .text-link,
+  #refresh-live,#sync-schedule,.season-calendar .button{font-size:var(--desktop-control)}
+  .button{min-height:58px;padding:17px 27px}
+  .filter{min-height:54px;padding:14px 24px}
+  .next-match{align-self:center;margin-bottom:0;padding:36px 36px 32px;border-top-width:4px}
+  .next-match-top{margin-bottom:25px;gap:18px}
+  .next-match-top h2{font-size:36px}
+  .next-match-date,.next-match-date>span{font-size:var(--desktop-detail);line-height:1.7}
+  .next-match-date{margin-bottom:30px}
+  .matchup{gap:20px;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr)}
+  .match-team{font-size:var(--desktop-control);gap:17px;line-height:1.45}
+  .match-team img{width:104px;height:96px}
+  .match-team>span{font-size:13px}
+  .match-vs{font-size:30px}
+  .match-meta{font-size:var(--desktop-detail);margin-top:32px;padding-top:22px}
+  .match-actions{gap:18px;margin-top:22px}
+  .match-actions .button.primary{padding:16px 20px;min-height:56px}
+  .mini-label{font-size:12px}
+  .section h2,.venue-section h2,.join-section h2{font-size:clamp(80px,5vw,104px)}
+  .eyebrow{font-size:var(--desktop-detail)}
+  .section-description,.section-side p,.club-grid p:not(.eyebrow):not(.lead),
+  .join-section p:not(.eyebrow),.join-grid dd,.venue-section p:not(.eyebrow),
+  .milestone p,.calendar-copy,.achievement p,.cup-card p{font-size:var(--desktop-text)}
+  .lead,.club-grid .lead{font-size:clamp(24px,1.4vw,29px);max-width:36ch}
+  .club-grid p:not(.eyebrow):not(.lead),.join-section p:not(.eyebrow){max-width:60ch}
+  .club-strip-inner{min-height:155px}
+  .club-strip strong{font-size:80px}
+  .club-strip-inner>div>span,.club-strip-inner>a{font-size:var(--desktop-detail)}
+  .club-mark{min-height:420px}
+  .club-mark img{width:250px;height:250px}
+  .club-mark p{font-size:14px!important}
+  .club-mark>span{font-size:13px}
+  .achievement{padding:35px;min-height:240px}
+  .achievement strong{font-size:62px}
+  .achievement-year{font-size:var(--desktop-detail)}
+  .season-stamp{font-size:64px}
+  .calendar-copy h3{font-size:34px}
+  .season-calendar{padding:30px 34px;margin-bottom:30px}
+  .schedule-sync,.section-note,.live-section .section-note,.minor-note,.panel-note,
+  .panel-heading>span,.scorer-heading>span,.playoff-row>div>span,.goal-time,.goal-name>span,
+  .player-role,.footer-bottom,.footer-bottom button,.footer-bottom>span:first-child,
+  .footer-bottom>span:last-child{font-size:var(--desktop-detail)}
+  .home-filter{font-size:var(--desktop-control)}
+  .home-filter input{width:23px;height:23px}
+  .fixture-row{grid-template-columns:100px minmax(400px,1fr) 110px 140px 126px;min-height:150px;padding:26px 32px;gap:28px}
+  .fixture-team{font-size:var(--desktop-control);gap:18px;line-height:1.5}
+  .fixture-team img{width:62px;height:62px}
+  .fixture-teams{gap:20px;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr)}
+  .fixture-versus{font-size:16px}
+  .fixture-time{font-size:23px}
+  .fixture-type,.date-month,.fixture-time span,.fixture-time small{font-size:var(--desktop-detail)}
+  .date-day{font-size:52px}
+  .calendar-button,.fixture-actions .fixture-source{min-width:54px;min-height:54px}
+  .calendar-button{width:54px;height:54px}
+  .calendar-button svg{width:24px;height:24px}
+  .fixture-actions .fixture-source{font-size:28px}
+  .player-search{max-width:340px;min-height:54px;padding-inline:18px}
+  .player-search input{font-size:18px}
+  .players-grid{gap:36px 30px}
+  .player-visual{height:300px}
+  .player-visual svg{width:210px;height:255px}
+  .player-initials{font-size:140px}
+  .player-info{padding:26px 27px;min-height:130px}
+  .player-first,.player-info>p{font-size:var(--desktop-control)}
+  .player-last{font-size:40px}
+  .team-memory figcaption{padding:45px}
+  .team-memory figcaption>strong{font-size:58px}
+  .team-memory figcaption p{font-size:var(--desktop-text)}
+  .team-memory .eyebrow,.team-memory figcaption .text-link{font-size:var(--desktop-detail)}
+  .stat-grid strong{font-size:90px}
+  .stat-grid .small-stat{font-size:50px}
+  .stat-grid>div>span{font-size:var(--desktop-detail)}
+  .results-intro,.playoff-row strong,.goalie-card>p,.goalie-card>div>span,
+  .milestone p,.history-table,.live-fixture-meta,.live-clock,.live-update-status,
+  .live-goals>p,.live-goal,.stream-status,.footer-top>p{font-size:var(--desktop-text)}
+  table,tbody th{font-size:var(--desktop-control)}
+  thead th{font-size:var(--desktop-detail)}
+  th,td{padding-block:22px;padding-inline:20px}
+  .results-intro{max-width:68ch}
+  .panel-heading h3,.scorer-heading h3{font-size:38px}
+  .playoff-row{min-height:110px;padding-block:23px}
+  .playoff-row>b{font-size:43px}
+  .goalie-card{padding:36px}
+  .goalie-card h3{font-size:42px}
+  .goalie-card>strong{font-size:96px}
+  .goalie-card>.mini-label{font-size:var(--desktop-detail)}
+  .milestone strong{font-size:92px}
+  .milestone p{max-width:50ch}
+  .milestone>div>span,.history-details summary{font-size:var(--desktop-control)}
+  .cup-card h4{font-size:34px;line-height:1.15}
+  .cup-year{font-size:54px}
+  .live-layout{gap:36px}
+  .live-ticker-panel,.live-stream-panel{padding:36px}
+  .live-panel-heading h3{font-size:40px}
+  .live-panel-heading .mini-label,.live-status-badge,.live-team>span{font-size:var(--desktop-detail)}
+  .live-team strong{font-size:var(--desktop-control);max-width:230px}
+  .live-team img{width:92px;height:92px}
+  .live-scoreboard{min-height:190px;padding-bottom:32px}
+  .live-score-number{font-size:100px}
+  .live-hero-score{font-size:70px}
+  .live-score-separator{font-size:52px}
+  .live-goal{grid-template-columns:64px 52px minmax(0,1fr);gap:18px;padding-block:18px}
+  .stream-poster>strong{font-size:36px}
+  .stream-poster img{width:120px;height:120px}
+  .stream-actions{gap:24px}
+  .stream-actions .button{min-height:58px;padding:17px 24px}
+  .join-grid dt{font-size:var(--desktop-detail)}
+  .footer-top .brand>span{font-size:34px}
+  #info-dialog{width:min(900px,calc(100% - 64px))}
+  #dialog-content{font-size:18px}
+}
+
+@media(min-width:1800px){
+  .header-inner{grid-template-columns:310px minmax(0,1fr) 190px;gap:36px}
+  #main-navigation{justify-content:center;gap:25px}
+  .header-league{display:flex;font-size:14px}
+  .header-league img{width:42px;height:42px}
+  .header-league small{font-size:12px}
+}
+
+@media(min-width:2200px){
+  :root{--header:120px}
+  .container{width:min(100%,2160px);padding-inline:64px}
+  .hero-inner{grid-template-columns:minmax(0,1fr) 700px;gap:120px;padding-block:100px 120px}
+  .hero h1{font-size:236px}
+  .next-match{padding:44px 46px 40px}
+  .next-match-top h2{font-size:42px}
+  .next-match-top{margin-bottom:30px}
+  .next-match-date,.next-match-date>span{font-size:17px}
+  .match-team{font-size:20px}
+  .match-team img{width:120px;height:110px}
+  .match-meta{font-size:17px}
+  #main-navigation{gap:34px}
+  .brand>span{font-size:36px}
+  .brand img{width:80px;height:80px}
+  .player-visual{height:340px}
+  .player-last{font-size:44px}
+}
