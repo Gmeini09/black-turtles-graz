@@ -36,3 +36,9 @@ Der Livestream startet erst nach einem Klick und nur bei einem frischen, passend
 - hls.js 1.7.3 wird lokal mit Apache-2.0-Lizenz ausgeliefert.
 
 Impressum und Datenschutz sind hinsichtlich Verantwortlichem und Vereinskontakt weiterhin als Entwurf gekennzeichnet. Nicht bestätigte Vereinsanschrift, Kontaktangaben und Trainingszeiten wurden nicht ergänzt.
+
+## Ergänzung der Cupgeschichte am 23.10.2026
+
+Die Vereinschronik nennt sieben ASVÖ-Cupsiege (2015, 2020 und 2021 bis 2025) sowie fünf Titel in Folge. Diese Angaben wurden vom Verein erneut bestätigt und sind auf der Website ausdrücklich als Vereinsangaben gekennzeichnet. Auch die Penaltyentscheidung gegen Rattlesnakes 2025 stammt aus dieser Auskunft.
+
+Die offiziellen ASVÖ-Berichte bestätigen die Gruppensiege in Gruppe B 2022 und 2023. Die archivierten Berichte für 2015 und 2021 nennen andere Sieger. Eine unabhängige Bestätigung der vollständigen Jahresliste liegt deshalb nicht vor; die unterschiedliche Quellenlage ist im Quellen-Dialog erläutert.
