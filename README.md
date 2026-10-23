@@ -19,7 +19,7 @@ GitHub Pages veröffentlicht den Ordner `docs/` aus dem Branch `main`. Änderung
 
 Die relativen Dateipfade funktionieren unter dem GitHub-Pages-Projektpfad. Ein lokaler Aufruf gelingt beispielsweise mit `python -m http.server 8765 --directory docs`.
 
-Die Seitenbereiche folgen der Menüfolge Start, Verein, Mannschaft, Spielplan, Live, Ergebnisse, Geschichte und Mitspielen. Native Sprunglinks verwenden einen gemeinsamen Abstand zur festen Kopfzeile; die aktive Menümarkierung folgt dem sichtbaren Bereich. `#cups` zeigt auf die Cup-Überschrift, `#cup-cards` enthält die gerenderten Karten.
+Die Seitenbereiche folgen der Menüfolge Start, Verein, Mannschaft, Spielplan, Live, Ergebnisse, Geschichte und Mitspielen. Native Sprunglinks scrollen weich mit einem gemeinsamen Abstand zur festen Kopfzeile. Während der Animation bleibt das gewählte Menüziel aktiv; beim manuellen Scrollen folgt die Markierung dem sichtbaren Bereich. Die Einstellung für reduzierte Bewegung wird berücksichtigt. `#cups` zeigt auf die Cup-Überschrift, `#cup-cards` enthält die gerenderten Karten.
 
 ## Daten und Livebetrieb
 

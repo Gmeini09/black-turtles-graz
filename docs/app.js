@@ -180,8 +180,26 @@
     else if (target?.id === 'inhalt') setActiveSection('start');
   }
   let navigationFrame = 0;
+  let navigationTarget = null;
+  let navigationSettleTimer = 0;
+  function releaseNavigationTarget() {
+    navigationTarget = null;
+    clearTimeout(navigationSettleTimer);
+    scheduleNavigation();
+  }
   function updateNavigation() {
     navigationFrame = 0;
+    if (navigationTarget) {
+      const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const maxScroll = Math.max(0,document.documentElement.scrollHeight - window.innerHeight);
+      const destination = Math.max(0,Math.min(maxScroll,window.scrollY + navigationTarget.getBoundingClientRect().top - padding));
+      if (Math.abs(window.scrollY - destination) > 2) {
+        activateTarget(navigationTarget);
+        return;
+      }
+      navigationTarget = null;
+      clearTimeout(navigationSettleTimer);
+    }
     const marker = $('.site-header').getBoundingClientRect().bottom + 24;
     let current = navigationSections[0];
     for (const section of navigationSections) {
@@ -191,6 +209,12 @@
     if (current) setActiveSection(current.id);
   }
   function scheduleNavigation() {
+    // Hold the selected menu item while native smooth scrolling passes other sections.
+    // The fallback also releases the target when scrolling is interrupted or never starts.
+    if (navigationTarget) {
+      clearTimeout(navigationSettleTimer);
+      navigationSettleTimer = setTimeout(releaseNavigationTarget,200);
+    }
     if (!navigationFrame) navigationFrame = requestAnimationFrame(updateNavigation);
   }
   // Keep native anchors and browser history; one CSS offset accounts for the sticky header.
@@ -200,9 +224,11 @@
     const target = hashTarget(link.hash);
     if (!target) return;
     closeMenu();
+    navigationTarget = target;
     activateTarget(target);
     scheduleNavigation();
   });
+  ['wheel','touchstart','pointerdown','keydown'].forEach(type => window.addEventListener(type,releaseNavigationTarget,{passive:true}));
   window.addEventListener('scroll',scheduleNavigation,{passive:true});
   window.addEventListener('resize',scheduleNavigation);
   window.addEventListener('hashchange',() => { activateTarget(hashTarget(window.location.hash)); scheduleNavigation(); });
@@ -220,7 +246,7 @@
     interactionEvents.forEach(type => window.removeEventListener(type,cancelInitialAlignment));
     if (allowInitialAlignment && initialHash && window.location.hash === initialHash) {
       const target = hashTarget(initialHash);
-      if (target) { target.scrollIntoView({block:'start',behavior:'auto'}); activateTarget(target); }
+      if (target) { target.scrollIntoView({block:'start',behavior:'instant'}); activateTarget(target); }
     }
     scheduleNavigation();
   }
