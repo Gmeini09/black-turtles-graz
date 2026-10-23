@@ -264,9 +264,10 @@ tbody th{font-size:13px;line-height:1.7}
 /* Desktop reading sizes. Explicit component sizes also grow with the layout. */
 @media(min-width:981px){
   body{font-size:17px}
-  .header-inner{grid-template-columns:225px minmax(0,1fr);gap:22px}
+  .header-inner{grid-template-columns:max-content minmax(0,1fr);gap:clamp(22px,2.6vw,48px)}
   .header-league{display:none}
-  #main-navigation{gap:clamp(13px,1.5vw,24px)}
+  #main-navigation{gap:clamp(13px,1.5vw,24px);justify-content:flex-start;min-width:0}
+  #main-navigation a{white-space:nowrap;flex-shrink:0}
   #main-navigation a{font-size:14px;min-height:48px}
   .brand small{font-size:11px;letter-spacing:.08em}
   .button,.text-link,.filter,.hero-actions .text-link,.match-actions a,.match-actions button,
@@ -325,17 +326,24 @@ tbody th{font-size:13px;line-height:1.7}
   .footer-top>p{font-size:17px}
 }
 
+@media(min-width:1280px){
+  .header-inner{grid-template-columns:max-content minmax(0,1fr) max-content}
+  .header-league{display:flex;font-size:13px;gap:10px;letter-spacing:0}
+  .header-league img{width:36px;height:36px}
+  .header-league small{font-size:11px}
+}
+
 @media(min-width:1440px){
   :root{--header:108px;--desktop-text:clamp(18px,1vw,20px);--desktop-detail:clamp(14px,.8vw,16px);--desktop-control:clamp(16px,.9vw,18px)}
   .container{width:min(100%,1760px);padding-inline:clamp(40px,3vw,64px)}
   body{font-size:var(--desktop-text)}
   .section{padding-block:130px}
-  .header-inner{grid-template-columns:280px minmax(0,1fr);gap:36px}
+  .header-inner{gap:clamp(28px,2.6vw,48px)}
   .brand{gap:17px}
   .brand img{width:70px;height:70px}
   .brand>span{font-size:32px}
   .brand small{font-size:12px;margin-top:10px}
-  #main-navigation{gap:clamp(21px,1.8vw,34px);justify-content:flex-end}
+  #main-navigation{gap:clamp(16px,1.3vw,28px)}
   #main-navigation a{font-size:var(--desktop-control)}
   #main-navigation a:after{bottom:21px;height:3px}
   .hero{min-height:max(850px,calc(100svh - var(--header)))}
@@ -460,8 +468,7 @@ tbody th{font-size:13px;line-height:1.7}
 }
 
 @media(min-width:1800px){
-  .header-inner{grid-template-columns:310px minmax(0,1fr) 190px;gap:36px}
-  #main-navigation{justify-content:center;gap:25px}
+  #main-navigation{gap:25px}
   .header-league{display:flex;font-size:14px}
   .header-league img{width:42px;height:42px}
   .header-league small{font-size:12px}
