@@ -81,7 +81,6 @@ window.TURTLES_DATA = {
     { year: '2022', title: 'ASVÖ-Cup · Platz 1', detail: 'Sieger der Gruppe B am 15. Oktober vor Devils Kapfenberg, Feldkirchen, Mighty Moose, Frogs und Ducks Feldbach.', url: 'https://www.asvoe-steiermark.at/de/newsshow-asvoe-eishockey-cup-2022/' },
     { year: '2023', title: 'ASVÖ-Cup · Platz 1', detail: 'Sieger der Gruppe B am 15. Oktober vor Rattle Snakes, Frogs, Timberwolves, Demolition und Icepirates.', url: 'https://www.asvoe-steiermark.at/de/newsshow-asvoe-eishockey-cup-2023/' },
     { year: '2024', title: 'ASVÖ-Cup · Platz 1', detail: 'Sieger der Gruppe A vor Rattle Snakes, Black Caps, Timberwolves und Rams. Turnier am 5. und 6. Oktober.', url: 'https://www.asvoe-steiermark.at/de/newsshow-news-----asvoe-jubilaeums-eishockey-cup-20242?return=25' },
-    { year: '2025', title: '3-gegen-3-NHL-Cup · Platz 11', detail: 'Unter 20 Mannschaften. Im Platzierungsspiel 5:4 gegen Feldbach Ducks.', url: 'https://www.ducks.at/index.php?start=20' },
     { year: '2025', title: 'ASVÖ-Cupsieger', detail: 'Titelgewinn im Oktober nach einem Penaltyschießen gegen die EC Rattlesnakes. Nach Vereinsangabe.', url: 'https://www.instagram.com/black.turtles/', linkLabel: 'Vereinsprofil' },
     { year: '2026', title: 'ASVÖ-Cup · Platz 2', detail: 'Zweiter in Gruppe A hinter Rattle Snakes und vor Mighty Moose und Skyscrapers. Turnier am 3. und 4. Oktober.', url: 'https://www.asvoe-steiermark.at/de/newsshow-asvoe-cup-2026-spannung-bis-zur-letzten-minute' }
   ],
