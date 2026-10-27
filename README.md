@@ -14,6 +14,7 @@ GitHub Pages veröffentlicht den Ordner `docs/` aus dem Branch `main`. Änderung
 - `docs/index.html`: Seiteninhalte und Metadaten.
 - `docs/styles.css` und `docs/improvements.css`: Gestaltung und responsive Größen.
 - `docs/app.js`: Filter, Suche, Dialoge und Kalenderdownload.
+- `docs/countdown.js`: sekundengenauer Countdown und gemeinsame Spielauswahl für Startkarte und Live-Bereich.
 - `docs/schedule.js`: automatischer Abgleich mit dem offiziellen NHL-Graz-Saisonfeed.
 - `docs/live.js`: offizieller Spielstatus, Tore und bestätigte Liveübertragung.
 
@@ -28,6 +29,8 @@ Der Saisonspielplan wird beim Öffnen und alle fünf Minuten mit dem öffentlich
 Rückennummern: geprüft am 23.10.2026. Der Ligakader 2026/27 enthält noch keine befüllten Nummern. 18 Karten zeigen die zuletzt belegte Nummer aus offiziellen Spielberichten 2025/26, jeweils mit Quellenlink. Alban und Jonas Schuller bleiben ohne Nummernbeleg.
 
 Der Livestream startet erst nach einem Klick und nur bei einem frischen, passenden NHL-Live-Feed. Videosegmente werden auf Aktualität geprüft. Der offizielle Gamecenter-Link bleibt als Alternative verfügbar. Für den Browserzugriff werden keine Zugangsdaten benötigt.
+
+Der Countdown berechnet Tage, Stunden, Minuten und Sekunden stets aus der bestätigten Startzeit und der aktuellen Uhr. Spielplanänderungen werden beim Ligaabgleich übernommen; abgesagte, offene und beendete Termine werden ausgeschlossen. Beim geplanten Beginn bleibt die Uhr auf null, bis ein offizieller Live- oder Endstatus vorliegt (höchstens sechs Stunden Wartefenster). Die Uhrzeit allein löst keine Live-Meldung aus. Bei bestätigtem Live-Spiel weicht der Countdown der Live-Anzeige. Grenzfälle und Wien-Zeitumrechnung prüfen: `node --test tests/countdown.test.cjs`.
 
 ## Quellen und Bildnachweise
 

@@ -412,3 +412,23 @@ tbody th:first-child{padding-left:0}
 @media(prefers-reduced-motion:reduce){.live-status-badge.is-live:before,#live-nav.is-live:before,.live-type:before{animation:none}}
 @media(max-width:760px){.scorer-layout{grid-template-columns:minmax(0,1fr)}.scorer-layout>*{min-width:0}.goalie-card h3{overflow-wrap:anywhere}}
 .next-match.is-live .matchup{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+
+/* Spielbeginn: gleiche Uhr auf der Startseite und im Live-Bereich. */
+.match-countdown{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.match-countdown[hidden]{display:none}
+.countdown-title{font-size:10px;font-weight:800;line-height:1.5;letter-spacing:.1em;color:var(--orange);margin:0 0 14px}
+.countdown-fixture{font-size:14px;line-height:1.6;font-weight:700;margin:0}
+.countdown-fixture>span{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:4px}
+.countdown-units{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.countdown-units>div{min-width:0;padding:12px 4px 10px;text-align:center;background:#ff691d0a;border:1px solid #ff691d40}
+.countdown-units strong{display:block;color:var(--orange);font-family:var(--display);font-size:42px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.countdown-units span{display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-top:7px}
+.countdown-note{margin:12px 0 0;font-size:11px;line-height:1.6;color:var(--muted)}
+.next-match .countdown-fixture{display:none}
+.match-countdown-banner{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,1fr);gap:14px 40px;align-items:center;margin:0 0 34px;padding:28px;border:1px solid #ff691d40;border-left:3px solid var(--orange);background:linear-gradient(110deg,#ff691d0d,#151515)}
+.match-countdown-banner .countdown-title{margin-bottom:9px}
+.match-countdown-banner .countdown-units strong{font-size:54px}
+.match-countdown-banner .countdown-note{grid-column:1/-1;margin:0}
+@media(min-width:1440px){.next-match .countdown-title{font-size:13px}.next-match .countdown-units strong{font-size:58px}.countdown-units span{font-size:12px}.countdown-note{font-size:13px}.match-countdown-banner{padding:32px 36px;gap:18px 60px}.match-countdown-banner .countdown-title{font-size:14px}.match-countdown-banner .countdown-fixture{font-size:20px}.match-countdown-banner .countdown-fixture>span{font-size:16px}.match-countdown-banner .countdown-units strong{font-size:68px}}
+@media(max-width:760px){.match-countdown-banner{grid-template-columns:minmax(0,1fr);padding:24px 20px;gap:20px}.match-countdown-banner .countdown-units strong{font-size:48px}.match-countdown-banner .countdown-title{font-size:11px}.match-countdown-banner .countdown-fixture{font-size:15px}}
+@media(max-width:350px){.countdown-units{gap:6px}.countdown-units strong,.match-countdown-banner .countdown-units strong{font-size:36px}.countdown-units span{font-size:9px}.match-countdown-banner{padding:22px 15px}}

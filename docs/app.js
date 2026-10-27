@@ -45,21 +45,30 @@
   window.TURTLES_UTILS = {fixtureInstant, fixtureReady, calendarText};
 
   function renderNextMatch() {
-    const live = window.TURTLES_LIVE?.state;
-    $('.next-match').classList.toggle('is-live',!!live?.isLive);
-    if (live?.isLive && live.fixture) {
-      const game = live.fixture;
+    const match = window.TURTLES_COUNTDOWN.getMatch();
+    $('.next-match').classList.toggle('is-live',match.mode === 'live');
+    if (match.mode === 'live') {
+      const game = match.fixture;
       $('#next-match-title').textContent = 'JETZT LIVE';
-      $('#next-match-content').innerHTML = `<p class="next-match-date">${escape(live.phase || 'NHL Graz · Gruppe A')}<span class="live-inline-label">● LIVE</span></p><div class="matchup"><div class="match-team">${teamLogo(game.home,62)}<strong>${escape(data.teams[game.home].short)}</strong></div><strong class="live-hero-score">${live.score ? `${live.score.home}:${live.score.away}` : '–:–'}</strong><div class="match-team">${teamLogo(game.away,62)}<strong>${escape(data.teams[game.away].short)}</strong></div></div><p class="match-meta">Eishalle Hart bei Graz</p><div class="match-actions"><a class="button primary" href="#live">Live ansehen <span aria-hidden="true">▶</span></a>${external(game.url,'Offizieller Ticker ↗')}</div>`;
+      $('#next-match-content').innerHTML = `<p class="next-match-date">${escape(match.phase || 'NHL Graz · Gruppe A')}<span class="live-inline-label">● LIVE</span></p><div class="matchup"><div class="match-team">${teamLogo(game.home,62)}<strong>${escape(data.teams[game.home].short)}</strong></div><strong class="live-hero-score">${match.score ? `${match.score.home}:${match.score.away}` : '–:–'}</strong><div class="match-team">${teamLogo(game.away,62)}<strong>${escape(data.teams[game.away].short)}</strong></div></div><p class="match-meta">Eishalle Hart bei Graz</p><div class="match-actions"><a class="button primary" href="#live">Live ansehen <span aria-hidden="true">▶</span></a>${external(game.url,'Offizieller Ticker ↗')}</div>`;
+      window.TURTLES_COUNTDOWN.render(match);
       return;
     }
-    $('#next-match-title').textContent = 'NÄCHSTES SPIEL';
-    const next = data.fixtures.find(fixture => fixtureReady(fixture) && fixtureInstant(fixture).getTime() >= Date.now());
+    $('#next-match-title').textContent = match.mode === 'waiting' ? 'SPIELTAG' : 'NÄCHSTES SPIEL';
+    const next = match.fixture;
     if (!next) {
       $('#next-match-content').innerHTML = `<div class="empty-state"><strong>Neue Termine folgen.</strong><p>Die hinterlegten Spiele sind bereits vergangen. Aktuelle Termine findest du bei der Liga.</p>${external('https://www.nhl-graz.com/teams/turtles','Zum offiziellen Spielplan ↗','text-link')}</div>`;
+      window.TURTLES_COUNTDOWN.render(match);
       return;
     }
-    $('#next-match-content').innerHTML = `<p class="next-match-date">${escape(formatDate(next.date,{weekday:'short',day:'2-digit',month:'long',year:'numeric'}))}<span>${next.time} UHR</span></p><div class="matchup"><div class="match-team">${teamLogo(next.home,62)}<strong>${escape(data.teams[next.home].short)}</strong><span>HEIM</span></div><span class="match-vs">VS</span><div class="match-team">${teamLogo(next.away,62)}<strong>${escape(data.teams[next.away].short)}</strong><span>GAST</span></div></div><p class="match-meta"><span aria-hidden="true">⌖</span> Eishalle Hart bei Graz</p><div class="match-actions"><button class="button primary" data-calendar="${next.id}">Im Kalender speichern <span aria-hidden="true">+</span></button><a href="#spielplan" aria-label="Zum gesamten Spielplan">Alle Spiele →</a></div>`;
+    $('#next-match-content').innerHTML = `<p class="next-match-date">${escape(formatDate(next.date,{weekday:'short',day:'2-digit',month:'long',year:'numeric'}))}<span>${next.time} UHR</span></p><div class="matchup"><div class="match-team">${teamLogo(next.home,62)}<strong>${escape(data.teams[next.home].short)}</strong><span>HEIM</span></div><span class="match-vs">VS</span><div class="match-team">${teamLogo(next.away,62)}<strong>${escape(data.teams[next.away].short)}</strong><span>GAST</span></div></div><div class="match-countdown" data-match-countdown role="timer" aria-live="off"></div><p class="match-meta"><span aria-hidden="true">⌖</span> Eishalle Hart bei Graz</p><div class="match-actions"><button class="button primary" data-calendar="${next.id}">Im Kalender speichern <span aria-hidden="true">+</span></button><a href="#spielplan" aria-label="Zum gesamten Spielplan">Alle Spiele →</a></div>`;
+    if (match.mode === 'waiting') {
+      const link = $('#next-match-content .match-actions a');
+      link.href = '#live';
+      link.textContent = 'Zum Live-Ticker →';
+      link.setAttribute('aria-label','Zum Live-Ticker');
+    }
+    window.TURTLES_COUNTDOWN.render(match);
   }
 
   let fixtureFilter = 'upcoming';
